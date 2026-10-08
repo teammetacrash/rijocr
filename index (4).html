@@ -1,0 +1,1730 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#111316"><meta name="description" content="Java programming laboratory — all ten exercises, full code, exact filenames and copy buttons. Single-file offline website."><title>JAVA / LAB — 10 Java Exercises</title><style>
+:root{--bg:#111316;--panel:#1a1d21;--panel2:#202429;--line:#33383b;--paper:#eef0e6;--ink:#f3f4ec;--muted:#a3aaa8;--lime:#c6fb5d;--violet:#b6a6ff;--mono:ui-monospace,SFMono-Regular,Consolas,'Liberation Mono',monospace;--sans:Inter,'Arial',system-ui,sans-serif}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:100px}body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.5}button,input{font:inherit}button{cursor:pointer}a{color:inherit;text-decoration:none}::selection{background:var(--lime);color:#161616}
+.layout{display:grid;grid-template-columns:270px minmax(0,1fr);min-height:100vh}.sidebar{padding:30px 23px;border-right:1px solid var(--line);height:100vh;position:sticky;top:0;display:flex;flex-direction:column;gap:34px;background:#15171a;z-index:10}.brand{display:flex;align-items:center;gap:13px;font-weight:950;font-size:22px;letter-spacing:-1.1px}.brand-icon{display:grid;place-items:center;width:40px;height:40px;background:var(--lime);color:#101010;font-family:var(--mono);font-size:20px;border-radius:12px;transform:rotate(-7deg)}.brand small{display:block;font-size:9px;letter-spacing:3px;font-weight:700;color:var(--muted);margin-top:1px}.nav-label{font:11px var(--mono);letter-spacing:1.4px;color:#79837f;margin-bottom:12px}.side-nav{display:grid;gap:5px}.side-nav a{display:flex;gap:13px;align-items:center;font-size:12px;font-weight:650;padding:10px;border-radius:9px;color:#b9bdb7;transition:.2s}.side-nav a:hover,.side-nav a.active{background:#292f28;color:var(--lime)}.side-nav .nav-num{font:11px var(--mono);color:#777e79}.side-nav a.active .nav-num{color:var(--lime)}.side-foot{margin-top:auto;border-top:1px solid var(--line);padding-top:19px;color:var(--muted);font:11px/1.8 var(--mono)}.side-foot b{color:var(--lime)}.workspace{min-width:0}.topbar{height:73px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 clamp(22px,4vw,70px);position:sticky;top:0;background:#111316ed;backdrop-filter:blur(16px);z-index:8}.crumb{font:11px var(--mono);letter-spacing:.65px;color:var(--muted)}.crumb strong{color:var(--lime)}.status{display:flex;align-items:center;gap:9px;font:11px var(--mono);color:#c2c5bc}.status i{width:8px;height:8px;background:var(--lime);border-radius:50%;box-shadow:0 0 0 5px #c6fb5d17}.menu{display:none;color:var(--ink);background:#25292d;border:1px solid var(--line);padding:9px 12px;border-radius:8px}.inner{max-width:1380px;margin:auto;padding:0 clamp(22px,4vw,70px)}
+.hero{padding:66px 0 45px;border-bottom:1px solid var(--line)}.eyebrow{font:11px var(--mono);letter-spacing:1.5px;color:var(--lime);display:flex;align-items:center;gap:13px}.eyebrow:before{content:'';display:inline-block;width:25px;height:2px;background:var(--lime)}h1{font-size:clamp(54px,7.4vw,114px);line-height:.97;letter-spacing:-.095em;margin:27px 0 25px;font-weight:900;max-width:940px}.hero-title-outline{color:transparent;-webkit-text-stroke:1.5px #a5b0a1}.highlight{color:var(--lime)}.hero-bottom{display:flex;justify-content:space-between;gap:28px;align-items:end}.hero-bottom p{max-width:590px;color:#b5bbb4;font-size:16px;line-height:1.8;margin:0}.hero-side{font:11px var(--mono);color:var(--muted);padding:12px 0;text-align:right}.hero-side strong{display:block;color:var(--ink);font-size:14px;margin-top:4px}.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border:1px solid var(--line);border-radius:17px;margin:30px 0 57px;overflow:hidden;background:#191c1f}.stat{padding:26px 30px;border-right:1px solid var(--line)}.stat:last-child{border:0}.stat b{display:block;font-size:35px;letter-spacing:-2px;line-height:1;color:var(--lime)}.stat span{font:10px var(--mono);letter-spacing:1px;color:var(--muted);display:block;margin-top:8px}
+.collection{padding-bottom:90px}.section-top{display:flex;align-items:flex-end;justify-content:space-between;gap:22px;margin-bottom:24px}.section-top h2{font-size:clamp(29px,3.5vw,49px);line-height:1;margin:12px 0 0;letter-spacing:-2px}.search-wrap{display:flex;align-items:center;gap:12px;border:1px solid #434947;background:#202328;border-radius:12px;padding:13px 17px;min-width:260px;max-width:390px;width:100%;transition:border-color .2s}.search-wrap:focus-within{border-color:var(--lime)}.search-mark{font-size:18px;color:var(--lime);font-family:var(--mono)}#search{border:0;outline:0;background:transparent;width:100%;color:var(--ink);font-size:13px}#search::placeholder{color:#929b93}.actions{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:28px}.btn{border:1px solid var(--line);background:#252a2d;color:var(--ink);border-radius:9px;padding:10px 14px;font:11px var(--mono);font-weight:700;letter-spacing:.3px;transition:transform .15s,background .15s,border-color .15s}.btn:hover{background:#353b3a;border-color:#707f64;transform:translateY(-1px)}.btn-primary{background:var(--lime);color:#111;border-color:var(--lime)}.btn-primary:hover{background:#dbff96;color:#111}.hint{margin-left:auto;color:#939f98;font:11px var(--mono);align-self:center}
+.exercise{margin:32px 0 52px;scroll-margin-top:100px}.ex-head{border-bottom:1px solid #596159;padding:17px 0 21px;display:flex;align-items:center;gap:20px}.ex-index{font:12px var(--mono);border:1px solid var(--lime);color:var(--lime);border-radius:50px;padding:8px 11px}.ex-head h3{font-size:clamp(24px,3vw,38px);letter-spacing:-1.6px;margin:0;line-height:1.05}.ex-sub{font-size:12px;color:var(--muted);margin-top:6px}.ex-qty{font:10px var(--mono);color:#929f90;margin-left:auto;white-space:nowrap}.program{margin-top:18px;background:#1b1e22;border:1px solid #33393a;border-radius:16px;overflow:hidden;transition:border .2s}.program:hover{border-color:#556151}.program-head{padding:23px 25px 18px;display:flex;align-items:flex-start;justify-content:space-between;gap:15px}.prog-meta{font:10px var(--mono);letter-spacing:1px;color:var(--lime);margin-bottom:6px}.program-head h4{font-size:22px;letter-spacing:-.7px;margin:0;font-weight:750}.program-head p{color:var(--muted);font-size:12px;margin:8px 0 0}.file-tag{color:var(--violet);border:1px solid #4f4b60;border-radius:30px;padding:7px 10px;font:10px var(--mono);white-space:nowrap}.file{margin:0 13px 13px;border:1px solid #32383a;border-radius:12px;background:#121518;overflow:hidden}.file-bar{background:#252a2d;border-bottom:1px solid #343a3b;display:flex;align-items:center;gap:11px;padding:11px 14px;flex-wrap:wrap}.dots{display:flex;gap:5px}.dots i{width:8px;height:8px;border-radius:50%;background:#5d6668}.dots i:first-child{background:#f29f86}.dots i:nth-child(2){background:#efcc69}.dots i:nth-child(3){background:#a7dd8b}.file-path{font:12px var(--mono);color:#e1e7df;overflow-wrap:anywhere}.file-path:before{content:'FILE / ';color:#838e85}.file-tools{display:flex;gap:7px;margin-left:auto}.mini-btn{border:1px solid #3c4841;background:#333b36;border-radius:7px;color:#dcf4d1;font:10px var(--mono);padding:8px 12px;white-space:nowrap;transition:.2s}.mini-btn:hover{border-color:var(--lime);color:var(--lime)}.copy{background:var(--lime);color:#121612;border-color:var(--lime);font-weight:800}.copy:hover{color:#111;background:#e3ffa7}.code-box{position:relative;overflow:auto;max-height:none}.code-box pre{padding:20px 24px 26px;margin:0;color:#dfe5dc;font:12.5px/1.8 var(--mono);tab-size:4;white-space:pre;min-width:max-content}.code-box code{font:inherit}.code-box .kw{color:#ccafff}.code-box .string{color:#c6fb80}.code-box .comment{color:#78897f}.code-box .num{color:#f9b886}.code-box .annotation{color:#80c9f4}.collapsed .code-box{display:none}.collapsed .file-bar{border-bottom:0}.hide{display:none!important}.no-results{display:none;background:#1f2424;border:1px dashed #586658;border-radius:15px;padding:32px;color:var(--muted);text-align:center}.no-results.show{display:block}.fineprint{border-top:1px solid var(--line);color:#8c9990;font-size:12px;padding:29px 0 42px}.fineprint strong{color:#cdd4cb}.toast{position:fixed;right:24px;bottom:25px;background:var(--lime);color:#111;padding:13px 20px;border-radius:10px;font:12px var(--mono);font-weight:800;box-shadow:0 12px 45px #0007;opacity:0;transform:translateY(10px);pointer-events:none;transition:.2s;z-index:30}.toast.show{opacity:1;transform:translateY(0)}.mobile-scrim{display:none}
+@media(max-width:1050px){.layout{grid-template-columns:220px minmax(0,1fr)}.sidebar{padding:25px 15px}.side-nav a{font-size:11px;gap:9px}.inner{padding:0 28px}.topbar{padding:0 28px}.hero{padding-top:52px}}@media(max-width:760px){.layout{display:block}.sidebar{position:fixed;left:0;top:0;bottom:0;width:min(310px,82vw);height:100dvh;transform:translateX(-105%);transition:transform .25s;box-shadow:20px 0 50px #0007}.sidebar.open{transform:translateX(0)}.mobile-scrim.open{display:block;position:fixed;inset:0;background:#0009;z-index:9}.menu{display:block}.crumb{font-size:10px}.topbar{padding:0 18px;height:65px}.status{display:none}.inner{padding:0 18px}.hero{padding:45px 0 35px}h1{font-size:clamp(52px,12vw,80px);letter-spacing:-.09em}.hero-bottom{align-items:flex-start;flex-direction:column;gap:16px}.hero-bottom p{font-size:14px}.hero-side{text-align:left}.stats{margin:25px 0 47px}.stat{padding:20px 13px}.stat b{font-size:28px}.stat span{font-size:9px}.section-top{align-items:stretch;flex-direction:column}.section-top h2{font-size:35px}.search-wrap{max-width:none;min-width:0}.hint{display:none}.ex-head{flex-wrap:wrap;gap:11px}.ex-head h3{font-size:27px}.ex-qty{display:none}.program-head{padding:18px;flex-wrap:wrap}.program-head h4{font-size:19px}.file{margin:0 8px 9px}.file-bar{gap:9px;padding:10px}.file-tools{width:100%;margin-left:0}.file-tools .mini-btn{flex:1}.code-box pre{font-size:11.5px;padding:16px}.toast{left:18px;right:18px;text-align:center}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important}}
+</style></head><body><div class="mobile-scrim" id="scrim"></div><div class="layout"><aside class="sidebar" id="sidebar"><a class="brand" href="#top"><span class="brand-icon">J.</span><span>JAVA/LAB<small>THE SOURCE ARCHIVE</small></span></a><div><div class="nav-label">INDEX / 10 EXERCISES</div><nav class="side-nav"><a href="#ex-1"><span class="nav-num">01</span>Java Fundamentals</a><a href="#ex-2"><span class="nav-num">02</span>Classes &amp; Objects</a><a href="#ex-3"><span class="nav-num">03</span>Packages</a><a href="#ex-4"><span class="nav-num">04</span>Inheritance</a><a href="#ex-5"><span class="nav-num">05</span>Interfaces</a><a href="#ex-6"><span class="nav-num">06</span>Abstract Classes</a><a href="#ex-7"><span class="nav-num">07</span>Exception Handling</a><a href="#ex-8"><span class="nav-num">08</span>File Handling</a><a href="#ex-9"><span class="nav-num">09</span>Multithreading</a><a href="#ex-10"><span class="nav-num">10</span>Event-Driven Programming</a></nav></div><div class="side-foot"><b>ALL CODE INCLUDED</b><br>Single HTML file. No backend.<br>No external assets needed.</div></aside><div class="workspace" id="top"><header class="topbar"><div class="crumb">STUDY / <strong>JAVA OOP LAB</strong> / CODE LIBRARY</div><div class="status"><i></i>OFFLINE READY</div><button id="menu" class="menu" aria-label="Open exercise navigation">MENU</button></header><main class="inner"><section class="hero"><div class="eyebrow">YOUR JAVA LAB. REIMAGINED.</div><h1>All your code.<br><span class="hero-title-outline">One</span> <span class="highlight">page.</span></h1><div class="hero-bottom"><p>Every exercise, class and file is right here. Find a program, read the code, copy it, and paste it into your Java project. Nothing hidden. No account needed.</p><div class="hero-side">THE COMPLETE COLLECTION<strong>01 — 10 / JAVA</strong></div></div></section><section class="stats"><div class="stat"><b>10</b><span>LAB EXERCISES</span></div><div class="stat"><b>21</b><span>COMPLETE PROGRAMS</span></div><div class="stat"><b>28</b><span>COPY-READY FILES</span></div></section><section class="collection"><div class="section-top"><div><div class="eyebrow">YOUR CODE COLLECTION</div><h2>Find. Copy. Run<span class="highlight">.</span></h2></div><label class="search-wrap" for="search"><span class="search-mark">/</span><input type="search" id="search" placeholder="Search topics, classes, filenames..." autocomplete="off"></label></div><div class="actions"><button class="btn btn-primary" id="expandAll" type="button">SHOW ALL CODE</button><button class="btn" id="collapseAll" type="button">COLLAPSE CODE</button><span class="hint" id="results">ALL PROGRAMS</span></div><div id="noResults" class="no-results">No matching programs. Try another topic or filename.</div><section class="exercise" id="ex-1" data-title="Java Fundamentals Conditions, loops, arrays and arithmetic"><div class="ex-head"><span class="ex-index">01</span><div><h3>Java Fundamentals</h3><div class="ex-sub">Conditions, loops, arrays and arithmetic</div></div><div class="ex-qty">07 PROGRAMS</div></div><article class="program" data-query="Positive / Negative / Zero Fundamentals and control flow positive/Positive.java"><div class="program-head"><div><div class="prog-meta">EX 01 / PROGRAM 01</div><h4>Positive / Negative / Zero</h4><p>Fundamentals and control flow</p></div><span class="file-tag">1 FILE</span></div><div class="file"><div class="file-bar"><div class="dots" aria-hidden="true"><i></i><i></i><i></i></div><div class="file-path">positive/Positive.java</div><div class="file-tools"><button class="mini-btn" type="button" data-download>DOWNLOAD</button><button class="mini-btn copy" type="button" data-copy>COPY CODE</button></div></div><div class="code-box"><pre><code>package positive;
+
+import java.util.Scanner;
+
+public class Positive{
+
+       public static void main(String[] args){
+
+      Scanner sc=new Scanner(System.in);
+
+       System.out.println(&quot;Enter the number&quot;);
+
+        int num=sc.nextInt();
+
+      if(num&lt;0)
+
+             System.out.println(num+&quot; is negative&quot;);
+
+       else if(num&gt;0)
+
+             System.out.println(num+&quot; is positive&quot;);
+
+       else
+
+             System.out.println(&quot;number is Zero&quot;);
+
+}
+
+}</code></pre></div></div></article><article class="program" data-query="Electricity Bill Fundamentals and control flow electricity/Electricity.java"><div class="program-head"><div><div class="prog-meta">EX 01 / PROGRAM 02</div><h4>Electricity Bill</h4><p>Fundamentals and control flow</p></div><span class="file-tag">1 FILE</span></div><div class="file"><div class="file-bar"><div class="dots" aria-hidden="true"><i></i><i></i><i></i></div><div class="file-path">electricity/Electricity.java</div><div class="file-tools"><button class="mini-btn" type="button" data-download>DOWNLOAD</button><button class="mini-btn copy" type="button" data-copy>COPY CODE</button></div></div><div class="code-box"><pre><code>package electricity;
+
+import java.util.Scanner;
+
+public class Electricity {
+
+  public static void main(String[] args) {
+
+    Scanner sc = new Scanner(System.in);
+
+     System.out.println(&quot;Enter the unit of electricity consumed:&quot;);
+
+      int unit = sc.nextInt();
+
+      if (unit &lt; 0) {
+          System.out.println(&quot;Units cannot be negative&quot;);
+          return;
+      }
+
+       if (unit &lt;= 100) {
+
+           float price = unit * 1.5f;
+
+          System.out.println(&quot;The electricity bill price is &quot; + price);
+
+    }
+
+     else if (unit &lt;= 200) {
+
+           unit = unit - 100;
+
+            float price = 100 * 1.5f + unit * 2.5f;
+
+           System.out.println(&quot;The electricity bill price is &quot; + price);
+
+    }
+
+     else {
+
+        unit = unit - 200;
+
+        float price = 100 * 1.5f + 100 * 2.5f + unit * 4;
+
+       System.out.println(&quot;The electricity bill price is &quot; + price);
+
+    }
+
+  }
+
+}</code></pre></div></div></article><article class="program" data-query="Switch Case Calculator Fundamentals and control flow switchcase/SwitchCase.java"><div class="program-head"><div><div class="prog-meta">EX 01 / PROGRAM 03</div><h4>Switch Case Calculator</h4><p>Fundamentals and control flow</p></div><span class="file-tag">1 FILE</span></div><div class="file"><div class="file-bar"><div class="dots" aria-hidden="true"><i></i><i></i><i></i></div><div class="file-path">switchcase/SwitchCase.java</div><div class="file-tools"><button class="mini-btn" type="button" data-download>DOWNLOAD</button><button class="mini-btn copy" type="button" data-copy>COPY CODE</button></div></div><div class="code-box"><pre><code>package switchcase;
+
+import java.util.Scanner;
+
+public class SwitchCase {
+
+   public static void main(String[] args) {
+
+    Scanner sc = new Scanner(System.in);
+
+     System.out.println(&quot;1. Addition \n2. Subtraction \n3. Multiplication&quot;);
+
+     System.out.print(&quot;Enter the choice: &quot;);
+
+      int choice = sc.nextInt();
+
+     System.out.print(&quot;Enter the two numbers: &quot;);
+
+      int a = sc.nextInt();
+
+      int b = sc.nextInt();
+
+     switch (choice) {
+
+       case 1:
+
+           int res1 = a + b;
+
+          System.out.println(&quot;The addition of both number is &quot; + res1);
+
+          break;
+
+      case 2:
+
+           int res2 = a - b;
+
+          System.out.println(&quot;The Subtraction of both number is &quot; + res2);
+
+          break;
+
+      case 3:
+
+           int res3 = a * b;
+
+          System.out.println(&quot;The Multiplication of both number is &quot; + res3);
+
+          break;
+
+       default:
+
+          System.out.println(&quot;Invalid choice&quot;);
+
+  }}}</code></pre></div></div></article><article class="program" data-query="Factorial — While Loop Separate alternative to the for-loop factorial; both use the same class and filename in the original lab. factorial/Factorial.java"><div class="program-head"><div><div class="prog-meta">EX 01 / PROGRAM 04</div><h4>Factorial — While Loop</h4><p>Separate alternative to the for-loop factorial; both use the same class and filename in the original lab.</p></div><span class="file-tag">1 FILE</span></div><div class="file"><div class="file-bar"><div class="dots" aria-hidden="true"><i></i><i></i><i></i></div><div class="file-path">factorial/Factorial.java</div><div class="file-tools"><button class="mini-btn" type="button" data-download>DOWNLOAD</button><button class="mini-btn copy" type="button" data-copy>COPY CODE</button></div></div><div class="code-box"><pre><code>package factorial;
+
+import java.util.Scanner;
+
+public class Factorial {
+
+  public static void main(String[] args) {
+
+    Scanner sc = new Scanner(System.in);
+
+     System.out.println(&quot;Enter the number&quot;);
+
+      int num = sc.nextInt();
+
+      if (num &lt; 0 || num &gt; 12) {
+          System.out.println(&quot;Enter a number between 0 and 12&quot;);
+          return;
+      }
+
+      int temp = num;
+
+      int mul = 1;
+
+     while (num &gt; 0) {
+
+      mul = mul * num;
+
+       num--;
+
+    }
+
+     System.out.println(&quot;The factorial of &quot; + temp);
+
+     System.out.println(&quot;is &quot; + mul);
+
+  }
+
+}</code></pre></div></div></article><article class="program" data-query="Factorial — For Loop Run separately from the while-loop version because both original programs are named factorial/Factorial.java. factorial/Factorial.java"><div class="program-head"><div><div class="prog-meta">EX 01 / PROGRAM 05</div><h4>Factorial — For Loop</h4><p>Run separately from the while-loop version because both original programs are named factorial/Factorial.java.</p></div><span class="file-tag">1 FILE</span></div><div class="file"><div class="file-bar"><div class="dots" aria-hidden="true"><i></i><i></i><i></i></div><div class="file-path">factorial/Factorial.java</div><div class="file-tools"><button class="mini-btn" type="button" data-download>DOWNLOAD</button><button class="mini-btn copy" type="button" data-copy>COPY CODE</button></div></div><div class="code-box"><pre><code>package factorial;
+
+import java.util.Scanner;
+
+public class Factorial {
+
+  public static void main(String[] args) {
+
+    Scanner sc = new Scanner(System.in);
+
+     System.out.println(&quot;Enter the number&quot;);
+
+      int num = sc.nextInt();
+
+      if (num &lt; 0 || num &gt; 12) {
+          System.out.println(&quot;Enter a number between 0 and 12&quot;);
+          return;
+      }
+
+      int mul = 1;
+
+     for (int i = 1; i &lt;= num; i++) {
+
+      mul = mul * i;
+
+    }
+
+     System.out.println(&quot;The factorial of number &quot; + num);
+
+     System.out.println(&quot;is &quot; + mul);
+
+  }
+
+}</code></pre></div></div></article><article class="program" data-query="Do-While Menu Fundamentals and control flow dowhile/Dowhile.java"><div class="program-head"><div><div class="prog-meta">EX 01 / PROGRAM 06</div><h4>Do-While Menu</h4><p>Fundamentals and control flow</p></div><span class="file-tag">1 FILE</span></div><div class="file"><div class="file-bar"><div class="dots" aria-hidden="true"><i></i><i></i><i></i></div><div class="file-path">dowhile/Dowhile.java</div><div class="file-tools"><button class="mini-btn" type="button" data-download>DOWNLOAD</button><button class="mini-btn copy" type="button" data-copy>COPY CODE</button></div></div><div class="code-box"><pre><code>package dowhile;
+
+import java.util.Scanner;
+
+public class Dowhile {
+    public static void main(String[] args) {
+        int a = 10, b = 5;
+        int ch;
+        int choice;
+        Scanner s = new Scanner(System.in);
+
+        do {
+            System.out.println(&quot;1. add&quot;);
+            System.out.println(&quot;2. sub&quot;);
+            System.out.println(&quot;3. multiply&quot;);
+            System.out.println(&quot;4. divide&quot;);
+            System.out.println(&quot;Enter the value of ch&quot;);
+            ch = s.nextInt();
+
+            switch (ch) {
+                case 1:
+                    System.out.println(&quot;Sum is &quot; + (a + b));
+                    break;
+                case 2:
+                    System.out.println(&quot;Difference is &quot; + (a - b));
+                    break;
+                case 3:
+                    System.out.println(&quot;Product is &quot; + (a * b));
+                    break;
+                case 4:
+                    System.out.println(&quot;Quotient is &quot; + (a / b));
+                    break;
+                default:
+                    System.out.println(&quot;Invalid choice&quot;);
+            }
+
+            System.out.println(&quot;Enter Choice (1 for continue)&quot;);
+            choice = s.nextInt();
+        } while (choice == 1);
+
+        System.out.println(&quot;Program stopped&quot;);
+    }
+}</code></pre></div></div></article><article class="program" data-query="Array Sum Fundamentals and control flow array/Array.java"><div class="program-head"><div><div class="prog-meta">EX 01 / PROGRAM 07</div><h4>Array Sum</h4><p>Fundamentals and control flow</p></div><span class="file-tag">1 FILE</span></div><div class="file"><div class="file-bar"><div class="dots" aria-hidden="true"><i></i><i></i><i></i></div><div class="file-path">array/Array.java</div><div class="file-tools"><button class="mini-btn" type="button" data-download>DOWNLOAD</button><button class="mini-btn copy" type="button" data-copy>COPY CODE</button></div></div><div class="code-box"><pre><code>package array;
+
+import java.util.Scanner;
+
+public class Array {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n;
+        System.out.println(&quot;Enter the number of elements to add&quot;);
+        n = sc.nextInt();
+        if (n &lt; 0) {
+            System.out.println(&quot;Number of elements cannot be negative&quot;);
+            return;
+        }
+        int a[] = new int[n];
+
+        for (int i = 0; i &lt; n; i++) {
+            System.out.println(&quot;Enter the &quot; + (i + 1) + &quot; element&quot;);
+            a[i] = sc.nextInt();
+        }
+
+        int sum = 0;
+        for (int i = 0; i &lt; n; i++) {
+            sum = sum + a[i];
+        }
+        System.out.println(&quot;The sum of all entered elements is &quot; + sum);
+    }
+}</code></pre></div></div></article></section><section class="exercise" id="ex-2" data-title="Classes &amp; Objects Methods, state, object creation and program structure"><div class="ex-head"><span class="ex-index">02</span><div><h3>Classes &amp; Objects</h3><div class="ex-sub">Methods, state, object creation and program structure</div></div><div class="ex-qty">05 PROGRAMS</div></div><article class="program" data-query="Factorial Using Class  factorialmain/FactorialMain.java"><div class="program-head"><div><div class="prog-meta">EX 02 / PROGRAM 01</div><h4>Factorial Using Class</h4><p>Ready-to-copy Java source. Save with the filename below.</p></div><span class="file-tag">1 FILE</span></div><div class="file"><div class="file-bar"><div class="dots" aria-hidden="true"><i></i><i></i><i></i></div><div class="file-path">factorialmain/FactorialMain.java</div><div class="file-tools"><button class="mini-btn" type="button" data-download>DOWNLOAD</button><button class="mini-btn copy" type="button" data-copy>COPY CODE</button></div></div><div class="code-box"><pre><code>package factorialmain;
+
+import java.util.Scanner;
+
+class Factorial {
+
+   int n, fact;
+
+   void read() {
+
+        Scanner sc = new Scanner(System.in);
+
+         System.out.println(&quot;Enter the number:&quot;);
+
+       n = sc.nextInt();
+        if (n &lt; 0 || n &gt; 12) {
+            System.out.println(&quot;Enter a number between 0 and 12&quot;);
+            System.exit(0);
+        }
+
+   }
+
+   void opp() {
+
+         fact = 1;
+
+        for (int i = 1; i &lt;= n; i++) {
+
+                 fact = fact * i;
+
+    }
+
+   }
+
+ void print() {
+
+       System.out.println(&quot;Factorial of &quot; + n + &quot; = &quot; + fact);
+
+  }
+
+}
+
+public class FactorialMain {
+
+  public static void main(String[] args) {
+
+        Factorial f = new Factorial();
+
+          f.read();
+
+         f.opp();
+
+          f.print();
+
+  }}</code></pre></div></div></article><article class="program" data-query="Fibonacci Series  fibonaccimain/FibonacciMain.java"><div class="program-head"><div><div class="prog-meta">EX 02 / PROGRAM 02</div><h4>Fibonacci Series</h4><p>Ready-to-copy Java source. Save with the filename below.</p></div><span class="file-tag">1 FILE</span></div><div class="file"><div class="file-bar"><div class="dots" aria-hidden="true"><i></i><i></i><i></i></div><div class="file-path">fibonaccimain/FibonacciMain.java</div><div class="file-tools"><button class="mini-btn" type="button" data-download>DOWNLOAD</button><button class="mini-btn copy" type="button" data-copy>COPY CODE</button></div></div><div class="code-box"><pre><code>package fibonaccimain;
+
+import java.util.Scanner;
+
+class Fibo {
+
+         int n;
+
+          int a = 0, b = 1, c;
+
+ void read() {
+
+       Scanner sc = new Scanner(System.in);
+
+        System.out.println(&quot;Enter number of terms:&quot;);
+
+      n = sc.nextInt();
+        if (n &lt; 0 || n &gt; 47) {
+            System.out.println(&quot;Enter terms between 0 and 47&quot;);
+            System.exit(0);
+        }
+
+  }
+
+void opp() {
+
+       System.out.println(&quot;The Fibonacci Series is:&quot;);
+
+        for (int i = 1; i &lt;= n; i++) {
+
+               System.out.print(a + &quot; &quot;);
+
+              c = a + b;
+
+              a = b;
+
+            b = c;
+
+    }
+
+  }
+
+void print() {
+
+     System.out.println();
+
+  }
+
+}
+
+public class FibonacciMain {
+
+  public static void main(String[] args) {
+
+       Fibo f = new Fibo();
+
+      f.read();
+     f.opp();
+
+      f.print();
+
+  }
+
+}</code></pre></div></div></article><article class="program" data-query="Linear Search  linearsearchmain/LinearSearchMain.java"><div class="program-head"><div><div class="prog-meta">EX 02 / PROGRAM 03</div><h4>Linear Search</h4><p>Ready-to-copy Java source. Save with the filename below.</p></div><span class="file-tag">1 FILE</span></div><div class="file"><div class="file-bar"><div class="dots" aria-hidden="true"><i></i><i></i><i></i></div><div class="file-path">linearsearchmain/LinearSearchMain.java</div><div class="file-tools"><button class="mini-btn" type="button" data-download>DOWNLOAD</button><button class="mini-btn copy" type="button" data-copy>COPY CODE</button></div></div><div class="code-box"><pre><code>package linearsearchmain;
+
+import java.util.Scanner;
+
+class Linear {
+
+   int n, search, flag = 0;
+
+   int a[] = new int[50];
+
+   void getting() {
+
+       Scanner sc = new Scanner(System.in);
+
+        System.out.println(&quot;Enter the number of terms:&quot;);
+
+      n = sc.nextInt();
+        if (n &lt; 0 || n &gt; a.length) {
+            System.out.println(&quot;Enter between 0 and &quot; + a.length + &quot; elements&quot;);
+            System.exit(0);
+        }
+
+        for (int i = 0; i &lt; n; i++) {
+
+               System.out.println(&quot;Enter element &quot; + (i + 1) + &quot;:&quot;);
+
+                  a[i] = sc.nextInt();
+
+    }
+
+       System.out.println(&quot;Enter the element to search:&quot;);
+
+        search = sc.nextInt();
+
+  }
+
+
+
+  void search() {
+
+        for (int i = 0; i &lt; n; i++) {
+
+                             if (a[i] == search) {
+
+                     System.out.println(&quot;Element found at position &quot; + (i + 1));
+
+                       flag = 1;
+
+                      break;
+
+      }
+
+    }
+
+       if (flag == 0) {
+
+       System.out.println(&quot;Element not found&quot;);
+    }
+
+  }
+
+}
+
+
+
+public class LinearSearchMain {
+
+  public static void main(String[] args) {
+
+       Linear li = new Linear();
+
+         li.getting();
+
+        li.search();
+
+  }
+
+}</code></pre></div></div></article><article class="program" data-query="Electricity Bill Using Class  electricitymain/ElectricityMain.java"><div class="program-head"><div><div class="prog-meta">EX 02 / PROGRAM 04</div><h4>Electricity Bill Using Class</h4><p>Ready-to-copy Java source. Save with the filename below.</p></div><span class="file-tag">1 FILE</span></div><div class="file"><div class="file-bar"><div class="dots" aria-hidden="true"><i></i><i></i><i></i></div><div class="file-path">electricitymain/ElectricityMain.java</div><div class="file-tools"><button class="mini-btn" type="button" data-download>DOWNLOAD</button><button class="mini-btn copy" type="button" data-copy>COPY CODE</button></div></div><div class="code-box"><pre><code>package electricitymain;
+
+import java.util.Scanner;
+
+class Electricity {
+
+         int unit;
+
+       double price;
+
+
+
+  void input() {
+
+       Scanner sc = new Scanner(System.in);
+
+       System.out.println(&quot;Enter the units consumed:&quot;);
+
+        unit = sc.nextInt();
+        if (unit &lt; 0) {
+            System.out.println(&quot;Units cannot be negative&quot;);
+            System.exit(0);
+        }
+
+  }
+
+
+
+  void calc() {
+
+          if (unit &lt;= 100) {
+
+                       price = unit * 1.5;
+
+      }
+
+        else if (unit &lt;= 200) {
+
+               price = (100 * 1.5) + (unit - 100) * 2.5;
+
+       }
+
+        else {
+
+               price = (100 * 1.5) + (100 * 2.5) + (unit - 200) * 4;
+
+      }
+
+     System.out.println(&quot;The bill amount is: &quot; + price);
+
+  }
+
+}
+public class ElectricityMain {
+
+  public static void main(String[] args) {
+
+        Electricity e = new Electricity();
+
+        e.input();
+
+        e.calc();
+
+  }
+
+}</code></pre></div></div></article><article class="program" data-query="Switch Case Using Class  switchmain/SwitchMain.java"><div class="program-head"><div><div class="prog-meta">EX 02 / PROGRAM 05</div><h4>Switch Case Using Class</h4><p>Ready-to-copy Java source. Save with the filename below.</p></div><span class="file-tag">1 FILE</span></div><div class="file"><div class="file-bar"><div class="dots" aria-hidden="true"><i></i><i></i><i></i></div><div class="file-path">switchmain/SwitchMain.java</div><div class="file-tools"><button class="mini-btn" type="button" data-download>DOWNLOAD</button><button class="mini-btn copy" type="button" data-copy>COPY CODE</button></div></div><div class="code-box"><pre><code>package switchmain;
+
+import java.util.Scanner;
+
+class Switch {
+
+       int a, b, choice;
+
+ void disp() {
+
+    Scanner sc = new Scanner(System.in);
+
+     System.out.println(&quot;1. Addition\n2. Subtraction\n3. Multiplication\n4. Division\n5. Modulus&quot;);
+
+     System.out.println(&quot;Enter your choice:&quot;);
+
+     choice = sc.nextInt();
+
+     System.out.println(&quot;Enter two numbers:&quot;);
+
+     a = sc.nextInt();
+
+    b = sc.nextInt();
+
+  }
+
+ void ans() {
+
+     switch (choice) {
+
+       case 1:
+
+              System.out.println(&quot;The addition of two numbers is &quot; + (a + b));
+
+              break;
+
+       case 2:
+
+               System.out.println(&quot;The subtraction of two numbers is &quot; + (a - b));
+
+              break;
+
+       case 3:
+
+              System.out.println(&quot;The multiplication of two numbers is &quot; + (a * b));
+
+              break;
+       case 4:
+
+              if (b == 0) {
+                    System.out.println(&quot;Cannot divide by zero&quot;);
+                } else {
+                    System.out.println(&quot;The division of two numbers is &quot; + (a / b));
+                }
+
+              break;
+
+       case 5:
+
+              if (b == 0) {
+                    System.out.println(&quot;Cannot divide by zero&quot;);
+                } else {
+                    System.out.println(&quot;The modulus of two numbers is &quot; + (a % b));
+                }
+
+              break;
+
+        default:
+
+               System.out.println(&quot;Invalid choice&quot;);
+
+    }
+
+  }
+
+}
+
+
+
+public class SwitchMain {
+
+  public static void main(String[] args) {
+
+      Switch s = new Switch();
+
+        s.disp();
+
+         s.ans();
+
+  }
+
+}</code></pre></div></div></article></section><section class="exercise" id="ex-3" data-title="Packages Multiple packages and imports"><div class="ex-head"><span class="ex-index">03</span><div><h3>Packages</h3><div class="ex-sub">Multiple packages and imports</div></div><div class="ex-qty">01 PROGRAMS</div></div><article class="program" data-query="Converter Package Keep package directories and source filenames exactly as shown converter/Time.java converter/Dist.java converter/Curr.java convertermain/ConverterMain.java"><div class="program-head"><div><div class="prog-meta">EX 03 / PROGRAM 01</div><h4>Converter Package</h4><p>Keep package directories and source filenames exactly as shown</p></div><span class="file-tag">4 FILES</span></div><div class="file"><div class="file-bar"><div class="dots" aria-hidden="true"><i></i><i></i><i></i></div><div class="file-path">converter/Time.java</div><div class="file-tools"><button class="mini-btn" type="button" data-download>DOWNLOAD</button><button class="mini-btn copy" type="button" data-copy>COPY CODE</button></div></div><div class="code-box"><pre><code>package converter;
+
+import java.util.Scanner;
+
+public class Time {
+
+   int hours;
+
+   int minutes;
+
+   int seconds;
+
+
+
+ public void timeConverter(Scanner sc) {
+
+    
+
+     System.out.println(&quot;Enter the time in hours&quot;);
+
+     hours = sc.nextInt();
+
+    minutes = hours * 60;
+
+    seconds = hours * 3600;
+
+     System.out.println(&quot;hours = &quot; + hours);
+
+     System.out.println(&quot;minutes = &quot; + minutes);
+
+     System.out.println(&quot;seconds = &quot; + seconds);
+
+  }
+
+}</code></pre></div></div><div class="file"><div class="file-bar"><div class="dots" aria-hidden="true"><i></i><i></i><i></i></div><div class="file-path">converter/Dist.java</div><div class="file-tools"><button class="mini-btn" type="button" data-download>DOWNLOAD</button><button class="mini-btn copy" type="button" data-copy>COPY CODE</button></div></div><div class="code-box"><pre><code>package converter;
+
+import java.util.Scanner;
+
+public class Dist {
+
+  double km, m, cm;
+
+   public void converterkm(Scanner sc) {
+
+       
+
+       System.out.println(&quot;Enter the distance in km&quot;);
+
+     km = sc.nextDouble();
+
+    m = km * 1000;
+     cm = km * 100000;
+
+       System.out.println(&quot;km = &quot; + km);
+
+       System.out.println(&quot;m = &quot; + m);
+
+       System.out.println(&quot;cm = &quot; + cm);
+
+  }
+
+}</code></pre></div></div><div class="file"><div class="file-bar"><div class="dots" aria-hidden="true"><i></i><i></i><i></i></div><div class="file-path">converter/Curr.java</div><div class="file-tools"><button class="mini-btn" type="button" data-download>DOWNLOAD</button><button class="mini-btn copy" type="button" data-copy>COPY CODE</button></div></div><div class="code-box"><pre><code>package converter;
+
+import java.util.Scanner;
+
+public class Curr {
+
+  double dollar;
+
+  double rupees;
+
+
+
+  public void rupeesConverter(Scanner sc) {
+
+       
+
+       System.out.println(&quot;Enter the dollar currency&quot;);
+
+        dollar = sc.nextDouble();
+
+       rupees = dollar * 95;
+
+       System.out.println(&quot;dollar = &quot; + dollar);
+
+       System.out.println(&quot;rupees = &quot; + rupees);
+
+  }
+
+}</code></pre></div></div><div class="file"><div class="file-bar"><div class="dots" aria-hidden="true"><i></i><i></i><i></i></div><div class="file-path">convertermain/ConverterMain.java</div><div class="file-tools"><button class="mini-btn" type="button" data-download>DOWNLOAD</button><button class="mini-btn copy" type="button" data-copy>COPY CODE</button></div></div><div class="code-box"><pre><code>package convertermain;
+
+import converter.*;
+
+import java.util.Scanner;
+
+public class ConverterMain {
+
+  public static void main(String[] args) {
+
+       Scanner sc = new Scanner(System.in);
+
+       Curr c = new Curr();
+
+       Dist d = new Dist();
+      Time t = new Time();
+
+         int choice, ch;
+
+      do {
+
+                      System.out.println(&quot;1. currency\n2. distance\n3. time&quot;);
+
+                      System.out.println(&quot;Enter your choice&quot;);
+
+                     choice = sc.nextInt();
+
+
+
+                     switch (choice) {
+
+                     case 1:
+
+                              c.rupeesConverter(sc);
+
+                             break;
+
+                     case 2:
+
+                            d.converterkm(sc);
+
+                             break;
+
+                     case 3:
+
+                              t.timeConverter(sc);
+
+                             break;
+
+                        default:
+
+                              System.out.println(&quot;Invalid choice&quot;);
+
+             }
+
+
+
+               System.out.println(&quot;Enter 1 for continue&quot;);
+
+             ch = sc.nextInt();
+
+    } while (ch == 1);
+
+  }
+
+}</code></pre></div></div></article></section><section class="exercise" id="ex-4" data-title="Inheritance Multilevel inheritance with separate classes"><div class="ex-head"><span class="ex-index">04</span><div><h3>Inheritance</h3><div class="ex-sub">Multilevel inheritance with separate classes</div></div><div class="ex-qty">01 PROGRAMS</div></div><article class="program" data-query="College → Department → Student  inheritance/Sxcce.java inheritance/Department.java inheritance/Student.java inheritance/Inheritance.java"><div class="program-head"><div><div class="prog-meta">EX 04 / PROGRAM 01</div><h4>College → Department → Student</h4><p>Ready-to-copy Java source. Save with the filename below.</p></div><span class="file-tag">4 FILES</span></div><div class="file"><div class="file-bar"><div class="dots" aria-hidden="true"><i></i><i></i><i></i></div><div class="file-path">inheritance/Sxcce.java</div><div class="file-tools"><button class="mini-btn" type="button" data-download>DOWNLOAD</button><button class="mini-btn copy" type="button" data-copy>COPY CODE</button></div></div><div class="code-box"><pre><code>package inheritance;
+
+import java.util.Scanner;
+
+public class Sxcce {
+
+  String name;
+
+  String place;
+
+  String dept;
+
+
+
+  void gettingclg(Scanner sc) {
+
+    
+
+     System.out.println(&quot;Enter the college name&quot;);
+
+    name = sc.next();
+
+     System.out.println(&quot;Enter the place&quot;);
+
+     place = sc.next();
+
+     System.out.println(&quot;Enter the department&quot;);
+
+     dept = sc.next();
+
+  }
+
+  void printclg() {
+
+     System.out.println(&quot;College name: &quot; + name);
+
+     System.out.println(&quot;place &quot; + place);
+
+     System.out.println(&quot;department &quot; + dept);
+
+  }
+
+}</code></pre></div></div><div class="file"><div class="file-bar"><div class="dots" aria-hidden="true"><i></i><i></i><i></i></div><div class="file-path">inheritance/Department.java</div><div class="file-tools"><button class="mini-btn" type="button" data-download>DOWNLOAD</button><button class="mini-btn copy" type="button" data-copy>COPY CODE</button></div></div><div class="code-box"><pre><code>package inheritance;
+
+import java.util.Scanner;
+
+public class Department extends Sxcce {
+
+  String block;
+
+  String hod;
+  String classno;
+
+  void gettingdept(Scanner sc) {
+
+    
+
+     System.out.println(&quot;Enter the department hod name&quot;);
+
+    hod = sc.next();
+
+     System.out.println(&quot;Enter the block name&quot;);
+
+     block = sc.next();
+
+     System.out.println(&quot;Enter the class no&quot;);
+
+     classno = sc.next();
+
+  }
+
+  void printingdept() {
+
+     System.out.println(&quot;hod name &quot; + hod);
+
+     System.out.println(&quot;Blockname &quot; + block);
+
+     System.out.println(&quot;classno &quot; + classno);
+
+  }
+
+}</code></pre></div></div><div class="file"><div class="file-bar"><div class="dots" aria-hidden="true"><i></i><i></i><i></i></div><div class="file-path">inheritance/Student.java</div><div class="file-tools"><button class="mini-btn" type="button" data-download>DOWNLOAD</button><button class="mini-btn copy" type="button" data-copy>COPY CODE</button></div></div><div class="code-box"><pre><code>package inheritance;
+
+import java.util.Scanner;
+
+public class Student extends Department {
+
+  String name;
+
+   int rollno;
+
+  void gettingst(Scanner sc) {
+
+    
+
+     System.out.println(&quot;Enter the name of the student&quot;);
+
+    name = sc.next();
+
+     System.out.println(&quot;Enter the rollno&quot;);
+
+     rollno = sc.nextInt();
+
+  }
+void printingst() {
+
+     System.out.println(&quot;Student name &quot; + name);
+
+     System.out.println(&quot;Rollno &quot; + rollno);
+
+  }
+
+}</code></pre></div></div><div class="file"><div class="file-bar"><div class="dots" aria-hidden="true"><i></i><i></i><i></i></div><div class="file-path">inheritance/Inheritance.java</div><div class="file-tools"><button class="mini-btn" type="button" data-download>DOWNLOAD</button><button class="mini-btn copy" type="button" data-copy>COPY CODE</button></div></div><div class="code-box"><pre><code>package inheritance;
+
+
+
+import java.util.Scanner;
+
+public class Inheritance {
+
+  public static void main(String[] args) {
+
+           Student s = new Student();
+        Scanner sc = new Scanner(System.in);
+
+             s.gettingclg(sc);
+
+             s.gettingdept(sc);
+
+               s.gettingst(sc);
+
+               s.printclg();
+
+              s.printingdept();
+
+               s.printingst();
+
+  }
+
+}</code></pre></div></div></article></section><section class="exercise" id="ex-5" data-title="Interfaces Implementing a bank account interface"><div class="ex-head"><span class="ex-index">05</span><div><h3>Interfaces</h3><div class="ex-sub">Implementing a bank account interface</div></div><div class="ex-qty">01 PROGRAMS</div></div><article class="program" data-query="Bank Account Interface  MainInterface.java"><div class="program-head"><div><div class="prog-meta">EX 05 / PROGRAM 01</div><h4>Bank Account Interface</h4><p>Ready-to-copy Java source. Save with the filename below.</p></div><span class="file-tag">1 FILE</span></div><div class="file"><div class="file-bar"><div class="dots" aria-hidden="true"><i></i><i></i><i></i></div><div class="file-path">MainInterface.java</div><div class="file-tools"><button class="mini-btn" type="button" data-download>DOWNLOAD</button><button class="mini-btn copy" type="button" data-copy>COPY CODE</button></div></div><div class="code-box"><pre><code>import java.util.Scanner;
+
+interface Bank {
+
+       void getDetails();
+
+       void deposit();
+
+       void withdraw();
+
+       void displayBalance();
+
+}
+
+class Account implements Bank {
+
+         int accno;
+
+       String name;
+
+       double balance;
+
+       Scanner sc = new Scanner(System.in);
+
+       public void getDetails() {
+
+               System.out.println(&quot;Enter account number:&quot;);
+
+               accno=sc.nextInt();
+
+               sc.nextLine();
+
+               System.out.println(&quot;Enter account holder name:&quot;);
+
+              name=sc.nextLine();
+
+               System.out.println(&quot;Enter balance:&quot;);
+
+              balance=sc.nextDouble();
+              if (balance &lt; 0) {
+                  System.out.println(&quot;Initial balance cannot be negative&quot;);
+                  balance = 0;
+              }
+
+      }
+
+       public void deposit() {
+
+             double amount;
+
+              System.out.print(&quot;Enter amount to deposit: &quot;);
+
+             amount=sc.nextDouble();
+
+             if (amount &lt;= 0) {
+                  System.out.println(&quot;Deposit amount must be positive&quot;);
+                  return;
+              }
+              balance+=amount;
+
+              System.out.println(&quot;Amount deposited successfully&quot;);
+      }
+
+       public void withdraw() {
+
+             double amount;
+
+               System.out.println(&quot;Enter amount to withdraw:&quot;);
+
+             amount=sc.nextDouble();
+
+             if (amount &lt;= 0) {
+                  System.out.println(&quot;Withdrawal amount must be positive&quot;);
+              } else if(amount&lt;=balance) {
+
+                    balance-=amount;
+
+                     System.out.println(&quot;Amount withdrawn successfully&quot;);
+
+            }
+
+               else {
+
+                       System.out.println(&quot;Insufficient balance&quot;);
+
+            }
+
+      }
+
+       public void displayBalance() {
+
+               System.out.println(&quot;\n--- Amount Details ---&quot;);
+
+              System.out.println(&quot;Account number: &quot;+accno);
+
+              System.out.println(&quot;Account Holder: &quot;+name);
+
+              System.out.println(&quot;Balance: &quot;+balance);
+
+      }
+
+}
+
+public class MainInterface {
+
+       public static void main(String[] args) {
+
+            Account obj=new Account();
+
+               System.out.println(&quot;--- Bank Account ---&quot;);
+
+                obj.getDetails();
+
+                obj.deposit();
+
+              obj.withdraw();
+
+               obj.displayBalance();
+
+      }}</code></pre></div></div></article></section><section class="exercise" id="ex-6" data-title="Abstract Classes Shape, Circle and Rectangle"><div class="ex-head"><span class="ex-index">06</span><div><h3>Abstract Classes</h3><div class="ex-sub">Shape, Circle and Rectangle</div></div><div class="ex-qty">01 PROGRAMS</div></div><article class="program" data-query="Shape Geometry  MainAbstract.java"><div class="program-head"><div><div class="prog-meta">EX 06 / PROGRAM 01</div><h4>Shape Geometry</h4><p>Ready-to-copy Java source. Save with the filename below.</p></div><span class="file-tag">1 FILE</span></div><div class="file"><div class="file-bar"><div class="dots" aria-hidden="true"><i></i><i></i><i></i></div><div class="file-path">MainAbstract.java</div><div class="file-tools"><button class="mini-btn" type="button" data-download>DOWNLOAD</button><button class="mini-btn copy" type="button" data-copy>COPY CODE</button></div></div><div class="code-box"><pre><code>import java.util.Scanner;
+
+abstract class shape {
+
+        abstract void area();
+
+       void display() {
+
+               System.out.println(&quot;This is a shape&quot;);
+
+      }
+
+}
+
+
+
+class Circle extends shape {
+
+       double radius;
+
+       Circle(double r) {
+
+               radius = r;
+
+      }
+
+       void area() {
+
+             double result = 3.14 * radius * radius;
+
+              System.out.println(&quot;Area = &quot; + result);
+
+      }
+
+       void circumference() {
+
+             double result = 2 * 3.14 * radius;
+
+              System.out.println(&quot;circumference = &quot; + result);
+
+      }
+
+}
+
+
+
+class Rectangle extends shape {
+
+       double length, breadth;
+
+       Rectangle(double l, double b) {
+
+              length = l;
+              breadth = b;
+
+      }
+
+       void area() {
+
+             double result = length * breadth;
+
+              System.out.println(&quot;Area = &quot; + result);
+
+      }
+
+       void perimeter() {
+
+             double result = 2 * (length + breadth);
+
+               System.out.println(&quot;perimeter = &quot; + result);
+
+      }
+
+}
+
+
+
+public class MainAbstract {
+
+       public static void main(String args[]) {
+
+             Scanner sc = new Scanner(System.in);
+
+              System.out.print(&quot;Enter the radius of circle: &quot;);
+
+             double r = sc.nextDouble();
+              if (r &lt; 0) {
+                  System.out.println(&quot;Radius cannot be negative&quot;);
+                  return;
+              }
+
+               Circle c = new Circle(r);
+
+
+
+               System.out.println(&quot;\n--- Circle ---&quot;);
+
+                c.display();
+
+                c.area();
+
+               c.circumference();
+
+
+
+              System.out.print(&quot;Enter length: &quot;);
+
+             double l = sc.nextDouble();
+
+              System.out.print(&quot;Enter breadth: &quot;);
+
+             double b = sc.nextDouble();
+              if (l &lt; 0 || b &lt; 0) {
+                  System.out.println(&quot;Rectangle dimensions cannot be negative&quot;);
+                  return;
+              }
+
+              Rectangle rect = new Rectangle(l, b);
+               System.out.println(&quot;\n--- Rectangle ---&quot;);
+
+                rect.display();
+
+                 rect.area();
+
+                rect.perimeter();
+
+      }
+
+}</code></pre></div></div></article></section><section class="exercise" id="ex-7" data-title="Exception Handling Built-in and custom exception types"><div class="ex-head"><span class="ex-index">07</span><div><h3>Exception Handling</h3><div class="ex-sub">Built-in and custom exception types</div></div><div class="ex-qty">02 PROGRAMS</div></div><article class="program" data-query="Built-in Exceptions Run in a separate folder: other exercises also contain Main.java. Main.java"><div class="program-head"><div><div class="prog-meta">EX 07 / PROGRAM 01</div><h4>Built-in Exceptions</h4><p>Run in a separate folder: other exercises also contain Main.java.</p></div><span class="file-tag">1 FILE</span></div><div class="file"><div class="file-bar"><div class="dots" aria-hidden="true"><i></i><i></i><i></i></div><div class="file-path">Main.java</div><div class="file-tools"><button class="mini-btn" type="button" data-download>DOWNLOAD</button><button class="mini-btn copy" type="button" data-copy>COPY CODE</button></div></div><div class="code-box"><pre><code>import java.util.Scanner;
+
+
+
+public class Main {
+
+  public static void main(String[] args) {
+
+    Scanner sc = new Scanner(System.in);
+
+     System.out.print(&quot;Enter size of array: &quot;);
+
+      int size = sc.nextInt();
+
+      int arr[] = new int[size];
+
+
+
+     System.out.println(&quot;Enter &quot; + size + &quot; elements:&quot;);
+
+     for (int i = 0; i &lt; size; i++) {
+
+         arr[i] = sc.nextInt();
+
+    }
+
+     try {
+
+       System.out.print(&quot;Enter numerator: &quot;);
+
+         int num = sc.nextInt();
+
+       System.out.print(&quot;Enter denominator: &quot;);
+
+         int den = sc.nextInt();
+
+
+
+         int result = num / den;
+
+       System.out.println(&quot;Division Result = &quot; + result);
+
+
+
+    } catch (ArithmeticException e) {
+
+       System.out.println(&quot;Error: Division by zero is not allowed!&quot;);
+
+    }
+     try {
+
+       System.out.println(&quot;Enter index to access:&quot;);
+
+         int index = sc.nextInt();
+
+       System.out.println(&quot;Value at index &quot; + index + &quot; = &quot; + arr[index]);
+
+
+
+    } catch (ArrayIndexOutOfBoundsException e) {
+
+       System.out.println(&quot;Error: Invalid array index!&quot;);
+
+    }
+
+
+
+     System.out.println(&quot;Program executed successfully.&quot;);
+
+     sc.close();
+
+  }
+
+}</code></pre></div></div></article><article class="program" data-query="User-defined Exceptions Run in a separate folder: other exercises also contain Main.java. Main.java"><div class="program-head"><div><div class="prog-meta">EX 07 / PROGRAM 02</div><h4>User-defined Exceptions</h4><p>Run in a separate folder: other exercises also contain Main.java.</p></div><span class="file-tag">1 FILE</span></div><div class="file"><div class="file-bar"><div class="dots" aria-hidden="true"><i></i><i></i><i></i></div><div class="file-path">Main.java</div><div class="file-tools"><button class="mini-btn" type="button" data-download>DOWNLOAD</button><button class="mini-btn copy" type="button" data-copy>COPY CODE</button></div></div><div class="code-box"><pre><code>import java.util.Scanner;
+
+
+
+// Custom Exception 1
+
+class InvalidAccountException extends Exception {
+
+       String message = &quot;Account number and PIN do not match!&quot;;
+
+
+
+      @Override
+
+       public String toString() {
+
+               return message;
+
+      }
+
+}
+
+
+
+// Custom Exception 2
+
+class InsufficientBalanceException extends Exception {
+
+       String message = &quot;Withdrawal amount exceeds balance!&quot;;
+
+
+
+      @Override
+
+       public String toString() {
+
+               return message;
+
+      }
+
+}
+
+
+
+public class Main {
+
+       public static void main(String[] args) {
+
+
+
+             Scanner sc = new Scanner(System.in);
+System.out.print(&quot;Set Account Number: &quot;);
+
+int accNo = sc.nextInt();
+
+
+
+System.out.print(&quot;Set PIN: &quot;);
+
+int pin = sc.nextInt();
+
+
+
+System.out.print(&quot;Enter Initial Balance: &quot;);
+
+double balance = sc.nextDouble();
+if (balance &lt; 0) {
+    System.out.println(&quot;Initial balance cannot be negative&quot;);
+    return;
+}
+
+
+
+try {
+
+           // Authentication
+
+       System.out.print(&quot;\nEnter Account Number: &quot;);
+
+         int enteredAccNo = sc.nextInt();
+
+
+
+       System.out.print(&quot;Enter PIN: &quot;);
+
+         int enteredPin = sc.nextInt();
+
+
+
+          if (accNo != enteredAccNo || pin != enteredPin) {
+
+             throw new InvalidAccountException();
+
+      }
+
+
+
+         int choice;
+
+
+
+      do {
+
+              System.out.println(&quot;\nATM Menu&quot;);
+
+               System.out.println(&quot;1. Deposit&quot;);
+
+               System.out.println(&quot;2. Withdraw&quot;);
+
+               System.out.println(&quot;3. Balance Enquiry&quot;);
+
+               System.out.println(&quot;4. Exit&quot;);
+                             System.out.print(&quot;Enter choice: &quot;);
+
+                            choice = sc.nextInt();
+
+
+
+                            switch (choice) {
+
+
+
+                            case 1:
+
+                                    System.out.print(&quot;Enter deposit amount: &quot;);
+
+                                 double deposit = sc.nextDouble();
+
+
+
+                                  if (deposit &lt;= 0) {
+                                      System.out.println(&quot;Deposit amount must be positive&quot;);
+                                      break;
+                                  }
+                                  balance += deposit;
+
+
+
+                                    System.out.println(&quot;Deposited: Rs. &quot; + deposit);
+
+                                   System.out.println(&quot;Updated Balance: Rs. &quot; + balance);
+
+                                    break;
+
+
+
+                            case 2:
+
+                                    System.out.print(&quot;Enter withdrawal amount: &quot;);
+
+                                 double withdraw = sc.nextDouble();
+
+
+
+                                         try {
+
+                                                           if (withdraw &lt;= 0) {
+                                                 System.out.println(&quot;Withdrawal amount must be positive&quot;);
+                                                 break;
+                                             }
+                                             if (withdraw &gt; balance) {
+
+                                             throw new
+InsufficientBalanceException();
+
+                                      }
+
+
+
+                                         balance -= withdraw;
+
+
+
+                                          System.out.println(&quot;Withdrawn: Rs. &quot; +
+withdraw);
+                                          System.out.println(&quot;Updated Balance: Rs. &quot; +
+balance);
+
+
+
+                               } catch (InsufficientBalanceException e) {
+
+                                             System.out.println(e);
+
+                               }
+
+                                    break;
+
+
+
+                            case 3:
+
+                                    System.out.println(&quot;Current Balance: Rs. &quot; + balance);
+
+                                    break;
+
+
+
+                            case 4:
+
+                                   System.out.println(&quot;Thank you for using the ATM!&quot;);
+
+                                    break;
+
+
+
+                                default:
+
+                                     System.out.println(&quot;Invalid choice!&quot;);
+
+                         }
+
+
+
+                   } while (choice != 4);
+
+
+
+            } catch (InvalidAccountException e) {
+
+                       System.out.println(e);
+
+            }
+
+
+
+                sc.close();
+
+      }
+
+}</code></pre></div></div></article></section><section class="exercise" id="ex-8" data-title="File Handling Copying bytes between text files"><div class="ex-head"><span class="ex-index">08</span><div><h3>File Handling</h3><div class="ex-sub">Copying bytes between text files</div></div><div class="ex-qty">01 PROGRAMS</div></div><article class="program" data-query="File Copy  FileCopy.java source.txt"><div class="program-head"><div><div class="prog-meta">EX 08 / PROGRAM 01</div><h4>File Copy</h4><p>Ready-to-copy Java source. Save with the filename below.</p></div><span class="file-tag">2 FILES</span></div><div class="file"><div class="file-bar"><div class="dots" aria-hidden="true"><i></i><i></i><i></i></div><div class="file-path">FileCopy.java</div><div class="file-tools"><button class="mini-btn" type="button" data-download>DOWNLOAD</button><button class="mini-btn copy" type="button" data-copy>COPY CODE</button></div></div><div class="code-box"><pre><code>import java.io.*;
+
+class FileCopy {
+    public static void main(String[] args) throws IOException {
+        try (FileInputStream in = new FileInputStream(&quot;source.txt&quot;);
+             FileOutputStream out = new FileOutputStream(&quot;destination.txt&quot;)) {
+            int data;
+            while ((data = in.read()) != -1) {
+                out.write(data);
+            }
+        }
+        System.out.println(&quot;File copied successfully.&quot;);
+    }
+}</code></pre></div></div><div class="file"><div class="file-bar"><div class="dots" aria-hidden="true"><i></i><i></i><i></i></div><div class="file-path">source.txt</div><div class="file-tools"><button class="mini-btn" type="button" data-download>DOWNLOAD</button><button class="mini-btn copy" type="button" data-copy>COPY CODE</button></div></div><div class="code-box"><pre><code>Sample text to copy.</code></pre></div></div></article></section><section class="exercise" id="ex-9" data-title="Multithreading Thread creation and random number processing"><div class="ex-head"><span class="ex-index">09</span><div><h3>Multithreading</h3><div class="ex-sub">Thread creation and random number processing</div></div><div class="ex-qty">01 PROGRAMS</div></div><article class="program" data-query="Even / Odd Threads Run in a separate folder: other exercises also contain Main.java. Main.java"><div class="program-head"><div><div class="prog-meta">EX 09 / PROGRAM 01</div><h4>Even / Odd Threads</h4><p>Run in a separate folder: other exercises also contain Main.java.</p></div><span class="file-tag">1 FILE</span></div><div class="file"><div class="file-bar"><div class="dots" aria-hidden="true"><i></i><i></i><i></i></div><div class="file-path">Main.java</div><div class="file-tools"><button class="mini-btn" type="button" data-download>DOWNLOAD</button><button class="mini-btn copy" type="button" data-copy>COPY CODE</button></div></div><div class="code-box"><pre><code>import java.util.*;
+
+
+
+class even extends Thread {
+
+   int x;
+
+  public even(int x) {
+
+     this.x = x;
+
+  }
+
+  public void run() {
+
+     System.out.println(&quot;new thread &quot; + x + &quot; is even and square of &quot; + x + &quot; is &quot; + (x * x));
+
+  }
+
+}
+
+
+
+class odd extends Thread {
+
+   int x;
+
+  public odd(int x) {
+
+     this.x = x;
+
+  }
+
+  public void run() {
+
+     System.out.println(&quot;new thread &quot; + x + &quot; is ODD and cube of &quot; + x + &quot; is: &quot; + (x * x *
+x));
+
+  }
+
+}
+
+
+
+class A extends Thread {
+
+  public void run() {
+
+      int num;
+
+    Random r = new Random();
+     try {
+
+        for (int i = 0; i &lt; 5; i++) {
+
+       num = r.nextInt(100);
+
+         System.out.println(&quot;main thread and generated number is &quot; + num);
+
+             if (num % 2 == 0) {
+
+           even t1 = new even(num);
+
+               t1.start();
+
+        } else {
+
+          odd t2 = new odd(num);
+
+               t2.start();
+
+        }
+
+         Thread.sleep(1000);
+
+      }
+
+    } catch (Exception e) {
+
+       System.out.println(e.getMessage());
+
+    }
+
+  }
+
+}
+
+
+
+public class Main {
+
+  public static void main(String args[]) {
+
+   A a = new A();
+
+      a.start();
+
+  }
+
+}</code></pre></div></div></article></section><section class="exercise" id="ex-10" data-title="Event-Driven Programming JavaFX calculator with button event handlers"><div class="ex-head"><span class="ex-index">10</span><div><h3>Event-Driven Programming</h3><div class="ex-sub">JavaFX calculator with button event handlers</div></div><div class="ex-qty">01 PROGRAMS</div></div><article class="program" data-query="JavaFX Calculator JavaFX GUI calculator: arithmetic, power and sin/cos/tan (degrees). Requires JavaFX SDK. SimpleCalculator.java"><div class="program-head"><div><div class="prog-meta">EX 10 / PROGRAM 01</div><h4>JavaFX Calculator</h4><p>JavaFX GUI calculator: arithmetic, power and sin/cos/tan (degrees). Requires JavaFX SDK.</p></div><span class="file-tag">1 FILE</span></div><div class="file"><div class="file-bar"><div class="dots" aria-hidden="true"><i></i><i></i><i></i></div><div class="file-path">SimpleCalculator.java</div><div class="file-tools"><button class="mini-btn" type="button" data-download>DOWNLOAD</button><button class="mini-btn copy" type="button" data-copy>COPY CODE</button></div></div><div class="code-box"><pre><code>import javafx.application.Application;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+
+public class SimpleCalculator extends Application {
+    private TextField textField;
+    private double firstNumber;
+    private String operator = &quot;&quot;;
+
+    @Override
+    public void start(Stage stage) {
+        stage.setTitle(&quot;Simple Calculator&quot;);
+        textField = new TextField();
+        textField.setAlignment(Pos.CENTER_RIGHT);
+        textField.setEditable(false);
+        textField.setPrefWidth(260);
+
+        String[] labels = {
+            &quot;7&quot;, &quot;8&quot;, &quot;9&quot;, &quot;/&quot;,
+            &quot;4&quot;, &quot;5&quot;, &quot;6&quot;, &quot;*&quot;,
+            &quot;1&quot;, &quot;2&quot;, &quot;3&quot;, &quot;-&quot;,
+            &quot;C&quot;, &quot;0&quot;, &quot;=&quot;, &quot;+&quot;,
+            &quot;%&quot;, &quot;sin&quot;, &quot;cos&quot;, &quot;tan&quot;,
+            &quot;^&quot;
+        };
+        GridPane grid = new GridPane();
+        grid.setAlignment(Pos.CENTER);
+        grid.setHgap(8);
+        grid.setVgap(8);
+        for (int i = 0; i &lt; labels.length; i++) {
+            Button button = new Button(labels[i]);
+            button.setMinSize(54, 46);
+            button.setOnAction(event -&gt; handleButton(button.getText()));
+            grid.add(button, i % 4, i / 4);
+        }
+
+        VBox root = new VBox(12, textField, grid);
+        root.setAlignment(Pos.CENTER);
+        root.setStyle(&quot;-fx-padding: 18;&quot;);
+        stage.setScene(new Scene(root, 300, 390));
+        stage.setResizable(false);
+        stage.show();
+    }
+
+    private void handleButton(String command) {
+        String current = textField.getText();
+        if (command.matches(&quot;[0-9]&quot;)) {
+            if (current.equals(&quot;Error&quot;)) current = &quot;&quot;;
+            textField.setText(current + command);
+        } else if (command.equals(&quot;C&quot;)) {
+            textField.clear();
+            firstNumber = 0;
+            operator = &quot;&quot;;
+        } else if (command.matches(&quot;sin|cos|tan&quot;)) {
+            if (current.isEmpty() || current.equals(&quot;Error&quot;)) return;
+            double degrees = Double.parseDouble(current);
+            double radians = Math.toRadians(degrees);
+            double answer;
+            if (command.equals(&quot;sin&quot;)) answer = Math.sin(radians);
+            else if (command.equals(&quot;cos&quot;)) answer = Math.cos(radians);
+            else {
+                if (Math.abs(Math.cos(radians)) &lt; 1e-10) {
+                    textField.setText(&quot;Error&quot;);
+                    return;
+                }
+                answer = Math.tan(radians);
+            }
+            textField.setText(format(answer));
+        } else if (command.matches(&quot;[+*/%\\-^]&quot;)) {
+            if (current.isEmpty() || current.equals(&quot;Error&quot;)) return;
+            firstNumber = Double.parseDouble(current);
+            operator = command;
+            textField.clear();
+        } else if (command.equals(&quot;=&quot;)) {
+            if (current.isEmpty() || operator.isEmpty() || current.equals(&quot;Error&quot;)) return;
+            double secondNumber = Double.parseDouble(current);
+            double result;
+            switch (operator) {
+                case &quot;+&quot;: result = firstNumber + secondNumber; break;
+                case &quot;-&quot;: result = firstNumber - secondNumber; break;
+                case &quot;*&quot;: result = firstNumber * secondNumber; break;
+                case &quot;/&quot;:
+                    if (secondNumber == 0) { textField.setText(&quot;Error&quot;); operator = &quot;&quot;; return; }
+                    result = firstNumber / secondNumber;
+                    break;
+                case &quot;%&quot;:
+                    if (secondNumber == 0) { textField.setText(&quot;Error&quot;); operator = &quot;&quot;; return; }
+                    result = firstNumber % secondNumber;
+                    break;
+                case &quot;^&quot;: result = Math.pow(firstNumber, secondNumber); break;
+                default: return;
+            }
+            textField.setText(Double.isFinite(result) ? format(result) : &quot;Error&quot;);
+            operator = &quot;&quot;;
+        }
+    }
+
+    private String format(double value) {
+        if (Math.abs(value) &lt; 1e-10) value = 0;
+        return Double.toString(value);
+    }
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+}</code></pre></div></div></article></section></section><footer class="fineprint"><strong>Java / Lab — all 10 exercises.</strong> This website displays code; it does not run Java in the browser. Create the folder and filename shown above for each source file. Keep unrelated programs in separate projects when class names repeat. JavaFX requires its SDK. Source text was adapted from your lab PDFs, with basic formatting fixes; the provided JavaFX trig buttons have no completed handlers.</footer></main></div></div><div role="status" aria-live="polite" class="toast" id="toast"></div><script>
+(function(){
+  'use strict';
+  const $=(s,root=document)=>root.querySelector(s);
+  const $$=(s,root=document)=>Array.from(root.querySelectorAll(s));
+  const toast=$('#toast');let toastTimer;
+  function notify(s){toast.textContent=s;toast.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>toast.classList.remove('show'),2300)}
+  async function copyText(text,node){
+    let copied=false;
+    if(navigator.clipboard&&window.isSecureContext){try{await navigator.clipboard.writeText(text);copied=true}catch(e){}}
+    if(!copied){const ta=document.createElement('textarea');ta.value=text;ta.readOnly=true;ta.style.cssText='position:fixed;left:0;top:0;opacity:0;z-index:-1';document.body.appendChild(ta);ta.focus();ta.select();try{copied=document.execCommand('copy')}catch(e){}ta.remove()}
+    if(copied){const old=node.textContent;node.textContent='COPIED';notify('Copied! Paste into the matching Java file.');setTimeout(()=>node.textContent=old,1700)}
+    else{const s=getSelection(),r=document.createRange();r.selectNodeContents(node.closest('.file').querySelector('code'));s.removeAllRanges();s.addRange(r);notify('Code selected. Press Ctrl+C to copy.')}
+  }
+  document.addEventListener('click',e=>{
+    const copy=e.target.closest('[data-copy]');if(copy){const code=copy.closest('.file').querySelector('code');copyText(code.textContent,copy);return}
+    const download=e.target.closest('[data-download]');if(download){const file=download.closest('.file');const content=file.querySelector('code').textContent;const path=file.querySelector('.file-path').textContent;const blob=new Blob([content+'\n'],{type:'text/plain;charset=utf-8'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=path.split('/').pop();document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),600);notify('Downloaded '+a.download);return}
+  });
+  const search=$('#search');const sections=$$('.exercise');
+  function filter(){const query=search.value.toLowerCase().trim();let found=0;
+    sections.forEach(sec=>{const title=(sec.dataset.title||'').toLowerCase(),matchSection=title.includes(query);let matches=0;
+      $$('.program',sec).forEach(p=>{const match=matchSection||(p.dataset.query||'').toLowerCase().includes(query);p.classList.toggle('hide',!match);if(match)matches++});
+      sec.classList.toggle('hide',!matches);if(matches)found+=matches});
+    $('#results').textContent=query?`${found} MATCH${found===1?'':'ES'}`:'ALL PROGRAMS';$('#noResults').classList.toggle('show',!found);
+  }
+  search.addEventListener('input',filter);
+  $('#expandAll').addEventListener('click',()=>{$$('.file').forEach(f=>f.classList.remove('collapsed'));notify('All Java source files expanded')});
+  $('#collapseAll').addEventListener('click',()=>{$$('.file').forEach(f=>f.classList.add('collapsed'));notify('Source files collapsed')});
+  $$('.file-path').forEach(el=>el.title='Create this exact file path in your Java project');
+  $$('.file-bar').forEach(bar=>{const t=document.createElement('button');t.className='mini-btn';t.type='button';t.textContent='HIDE CODE';t.setAttribute('aria-label','Show or hide source code');bar.querySelector('.file-tools').prepend(t);t.addEventListener('click',()=>{const f=t.closest('.file');f.classList.toggle('collapsed');t.textContent=f.classList.contains('collapsed')?'SHOW CODE':'HIDE CODE'})});
+  const menu=$('#menu'),side=$('#sidebar'),scrim=$('#scrim');function closeMenu(){side.classList.remove('open');scrim.classList.remove('open')}menu.addEventListener('click',()=>{side.classList.toggle('open');scrim.classList.toggle('open')});scrim.addEventListener('click',closeMenu);$$('.side-nav a').forEach(a=>a.addEventListener('click',()=>{search.value='';filter();closeMenu()}));
+  const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){$$('.side-nav a').forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+entry.target.id))}})},{rootMargin:'-15% 0px -70% 0px'});sections.forEach(s=>observer.observe(s));
+  // Syntax colors are purely visual; the underlying code stays unchanged for copying.
+  const tokens=/(\/\/[^\n]*|"(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*'|@[a-zA-Z]+|\b(?:public|private|protected|static|void|class|interface|abstract|extends|implements|package|import|new|return|if|else|for|while|do|switch|case|break|default|try|catch|throws|throw|int|double|float|char|boolean|String|true|false|this|super|final)\b|\b\d+(?:\.\d+)?\b)/g;
+  $$('.code-box code').forEach(code=>{const raw=code.textContent;const frag=document.createDocumentFragment();let prev=0;for(const m of raw.matchAll(tokens)){const i=m.index;if(i>prev)frag.appendChild(document.createTextNode(raw.slice(prev,i)));const span=document.createElement('span');span.className=m[0].startsWith('//')?'comment':m[0][0]==='"'||m[0][0]==="'"?'string':m[0][0]==='@'?'annotation':/^\d/.test(m[0])?'num':'kw';span.textContent=m[0];frag.appendChild(span);prev=i+m[0].length}if(prev<raw.length)frag.appendChild(document.createTextNode(raw.slice(prev)));code.replaceChildren(frag)});
+})();
+</script></body></html>
